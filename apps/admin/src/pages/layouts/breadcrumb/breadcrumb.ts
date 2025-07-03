@@ -2,8 +2,17 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  computed,
+  inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Common } from '../../../services/common';
+
+export interface brandCrumbModel {
+  title: string;
+  url: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-breadcrumb',
@@ -12,4 +21,7 @@ import { RouterLink } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class Breadcrumb {}
+export default class Breadcrumb {
+  readonly data = computed(() => this.#common.data);
+  readonly #common = inject(Common);
+}

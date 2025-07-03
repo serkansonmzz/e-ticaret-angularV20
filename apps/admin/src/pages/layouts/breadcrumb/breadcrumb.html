@@ -1,8 +1,21 @@
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a routerLink="/" class="d-flex align-items-center">
-      <span class="material-symbols-outlined">home</span>
-      <span>Home</span>
-    </a>
-  </li>
+  @for (crumb of data(); track crumb) {
+    <li
+      class="breadcrumb-item"
+      [class.active]="!crumb.url"
+      [attr.aria-current]="!crumb.url ? 'page' : null"
+    >
+      @if (crumb.url) {
+        <a [routerLink]="crumb.url" class="d-flex align-items-center">
+          <span class="material-symbols-outlined">{{ crumb.icon }}</span>
+          <span>{{ crumb.title }}</span>
+        </a>
+      } @else {
+        <span class="d-flex align-items-center">
+          <span class="material-symbols-outlined">{{ crumb.icon }}</span>
+          <span>{{ crumb.title }}</span>
+        </span>
+      }
+    </li>
+  }
 </ol>

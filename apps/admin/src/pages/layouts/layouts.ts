@@ -7,10 +7,11 @@ import {
 } from '@angular/core';
 import Breadcrumb from './breadcrumb/breadcrumb';
 import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { navigations } from '../../navigation';
 import { NavPipe } from '../../pipes/nav-pipe';
 import { DatePipe } from '@angular/common';
+
 
 @Component({
   imports: [
@@ -20,6 +21,7 @@ import { DatePipe } from '@angular/common';
     RouterLinkActive,
     NavPipe,
     DatePipe,
+    RouterOutlet
   ],
   templateUrl: './layouts.html',
   encapsulation: ViewEncapsulation.None,

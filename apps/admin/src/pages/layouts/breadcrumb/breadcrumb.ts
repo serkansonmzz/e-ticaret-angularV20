@@ -22,6 +22,6 @@ export interface brandCrumbModel {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Breadcrumb {
-  readonly data = computed(() => this.#common.data);
   readonly #common = inject(Common);
+  readonly data = computed(() => this.#common.data);
 }

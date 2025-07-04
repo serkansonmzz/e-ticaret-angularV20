@@ -13,7 +13,7 @@ export const navigations: NavigationModel[] = [
   {
     title: 'Products',
     url: '/products',
-    icon: 'shopping_cart',
+    icon: 'deployed_code',
   },
   {
     title: 'Customers',

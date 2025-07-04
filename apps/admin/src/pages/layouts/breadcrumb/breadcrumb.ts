@@ -23,5 +23,5 @@ export interface brandCrumbModel {
 })
 export default class Breadcrumb {
   readonly #common = inject(Common);
-  readonly data = computed(() => this.#common.data);
+  readonly data = computed(() => this.#common.data());
 }

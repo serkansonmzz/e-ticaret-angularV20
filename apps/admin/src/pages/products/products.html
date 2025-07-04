@@ -8,13 +8,14 @@
   captionTitle="Product List"
   [showExportExcelBtn]="true"
 >
-  <flexi-grid-column field="imageUrl" [filterable]="false" textAling="center">
+  <flexi-grid-column field="imageUrl" [filterable]="false">
     <ng-template flexiGridCellTemplate let-item>
       <img
         [src]="item.imageUrl"
         width="50"
         height="50"
         style="object-fit: contain"
+        [alt]="item.name"
       />
     </ng-template>
   </flexi-grid-column>

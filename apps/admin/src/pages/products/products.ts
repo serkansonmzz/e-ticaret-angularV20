@@ -1,11 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   ViewEncapsulation,
 } from '@angular/core';
 import Blank from '../../components/blank';
-import { FlexiGridModule } from 'flexi-grid';
+import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
 import { signal } from '@angular/core';
+import { httpResource } from '@angular/common/http';
 
 export interface ProductModel {
   id: number;
@@ -13,6 +15,8 @@ export interface ProductModel {
   imageUrl: string;
   price: number;
   stock: number;
+  categoryId: number;
+  categoryName: string;
 }
 
 @Component({
@@ -22,27 +26,18 @@ export interface ProductModel {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Products {
-  readonly data = signal<ProductModel[]>([
+  readonly result = httpResource<ProductModel[]>(
+    () => 'http://localhost:3000/products'
+  );
+  readonly data = computed(() => this.result.value() ?? []);
+  readonly loading = computed(() => this.result.isLoading());
+
+
+  
+  readonly categoryFilter = signal<FlexiGridFilterDataModel[]>([
     {
-      id: 1,
-      name: 'Ürün 1',
-      imageUrl: 'https://via.placeholder.com/50',
-      price: 100,
-      stock: 10,
-    },
-    {
-      id: 2,
-      name: 'Ürün 2',
-      imageUrl: 'https://via.placeholder.com/50',
-      price: 200,
-      stock: 5,
-    },
-    {
-      id: 3,
-      name: 'Ürün 3',
-      imageUrl: 'https://via.placeholder.com/50',
-      price: 150,
-      stock: 20,
+      name: 'Cell Phone',
+      value: 'Cell Phone',
     },
   ]);
 }

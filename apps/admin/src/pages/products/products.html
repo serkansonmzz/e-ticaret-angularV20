@@ -10,6 +10,16 @@
   [showExportExcelBtn]="true"
   (onRefresh)="result.reload()"
 >
+  <ng-template flexiGridCaptionCommandTemplate>
+    <flexi-button
+      routerLink="/products/create"
+      btnIcon="add"
+      btnColor="primary"
+      title="Add Product"
+      flexiTooltip
+    />
+  </ng-template>
+
   <flexi-grid-column field="imageUrl" [filterable]="false">
     <ng-template flexiGridCellTemplate let-item>
       <img

@@ -1,5 +1,3 @@
-import { HttpClient } from '@angular/common/http';
-//import { Location } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,6 +7,7 @@ import {
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import Blank from 'apps/admin/src/components/blank';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   imports: [Blank, FormsModule],
@@ -17,18 +16,20 @@ import Blank from 'apps/admin/src/components/blank';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Create {
-  readonly #http = inject(HttpClient);
   readonly #router = inject(Router);
-  //readonly #location = inject(Location);
+  readonly #service = inject(ProductService);
+
+  model = {
+    name: '',
+    imageUrl: '',
+    price: 0,
+    stock: 0,
+  };
 
   save(form: NgForm) {
     if (!form.valid) return;
 
-    this.#http
-      .post('http://localhost:3000/products', form.value)
-      .subscribe(() => {
-        this.#router.navigateByUrl('/products');
-        //this.#location.back(); //bir öncesi sayfaya işlem sonrası dönmeni sağlıyor
-      });
+    this.#service.create(this.model);
+    this.#router.navigateByUrl('/products');
   }
 }

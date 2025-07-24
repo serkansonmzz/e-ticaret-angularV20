@@ -61,6 +61,7 @@
       title="Edit"
       style="margin-right: 10px"
       flexiTooltip
+      [routerLink]="['/products/edit', item.id]"
     ></flexi-button>
     <flexi-button
       btnIcon="delete"
@@ -68,6 +69,7 @@
       btnSize="small"
       title="Delete"
       flexiTooltip
+      (click)="delete(item)"
     ></flexi-button>
   </ng-template>
 </flexi-grid>

@@ -8,9 +8,9 @@
 <div class="row">
   <div class="col-md-4 col-12">
     <div class="card">
-      <div class="card-header">
-        <h4>{{title()}}</h4>
-      </div>
+<div class="card-header">
+  <h4>Add Product</h4>
+</div>
       <div class="card-body">
         <form #form="ngForm" autocomplete="off" (ngSubmit)="save(form)">
           <div class="form-group mt-2">
@@ -18,7 +18,7 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="data().name"
+              [(ngModel)]="model.name"
               name="name"
             />
           </div>
@@ -28,7 +28,7 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="data().imageUrl"
+              [(ngModel)]="model.imageUrl"
               name="imageUrl"
             />
           </div>
@@ -38,7 +38,7 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="data().price"
+              [(ngModel)]="model.price"
               name="price"
               mask="separator.2"
               thousandSeparator="."
@@ -50,13 +50,13 @@
             <input
               type="text"
               class="form-control"
-              [(ngModel)]="data().stock"
+              [(ngModel)]="model.stock"
               name="stock"
             />
           </div>
 
           <div class="form-group mt-2 d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">{{btnName()}}</button>
+            <button type="submit" class="btn btn-primary">Save</button>
           </div>
         </form>
       </div>

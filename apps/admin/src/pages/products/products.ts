@@ -1,14 +1,16 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   ViewEncapsulation,
+  computed,
+  signal,
+  inject,
+  OnInit,
 } from '@angular/core';
 import Blank from '../../components/blank';
 import { FlexiGridFilterDataModel, FlexiGridModule } from 'flexi-grid';
-import { signal } from '@angular/core';
-import { httpResource } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 export interface ProductModel {
   id: number;
@@ -26,12 +28,15 @@ export interface ProductModel {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class Products {
-  readonly result = httpResource<ProductModel[]>(
-    () => 'http://localhost:3000/products'
-  );
-  readonly data = computed(() => this.result.value() ?? []);
-  readonly loading = computed(() => this.result.isLoading());
+export default class Products implements OnInit {
+  readonly service = inject(ProductService);
+
+  ngOnInit() {
+    this.service.load();
+  }
+
+  readonly data = computed(() => this.service.products());
+  readonly loading = computed(() => false);
 
   readonly categoryFilter = signal<FlexiGridFilterDataModel[]>([
     {
@@ -39,4 +44,12 @@ export default class Products {
       value: 'Cell Phone',
     },
   ]);
+
+  edit(product: ProductModel) {
+    // navigate to edit page or open a modal
+  }
+
+  delete(product: ProductModel) {
+    this.service.remove(product.id);
+  }
 }

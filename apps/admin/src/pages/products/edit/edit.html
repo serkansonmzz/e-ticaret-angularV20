@@ -1,0 +1,39 @@
+<app-blank
+  pageTitle="Edit-Product"
+  [breadcrums]="[
+    {title: 'Products', url: '/products', icon: 'deployed_code'},
+    {title: 'Edit', url: '/products/edit', icon: 'edit'}]"
+/>
+
+<div class="row" *ngIf="data as d">
+  <div class="col-md-4 col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Edit Product</h4>
+      </div>
+      <div class="card-body">
+        <form #form="ngForm" autocomplete="off" (ngSubmit)="save(form)">
+          <div class="form-group mt-2">
+            <label>Name</label>
+            <input type="text" class="form-control" [(ngModel)]="d.name" name="name" />
+          </div>
+          <div class="form-group mt-2">
+            <label>Image</label>
+            <input type="text" class="form-control" [(ngModel)]="d.imageUrl" name="imageUrl" />
+          </div>
+          <div class="form-group mt-2">
+            <label>Price</label>
+            <input type="text" class="form-control" [(ngModel)]="d.price" name="price" />
+          </div>
+          <div class="form-group mt-2">
+            <label>Stock</label>
+            <input type="text" class="form-control" [(ngModel)]="d.stock" name="stock" />
+          </div>
+          <div class="form-group mt-2 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

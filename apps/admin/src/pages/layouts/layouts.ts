@@ -12,7 +12,6 @@ import { navigations } from '../../navigation';
 import { NavPipe } from '../../pipes/nav-pipe';
 import { DatePipe } from '@angular/common';
 
-
 @Component({
   imports: [
     Breadcrumb,
@@ -21,7 +20,7 @@ import { DatePipe } from '@angular/common';
     RouterLinkActive,
     NavPipe,
     DatePipe,
-    RouterOutlet
+    RouterOutlet,
   ],
   templateUrl: './layouts.html',
   encapsulation: ViewEncapsulation.None,

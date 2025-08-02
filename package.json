@@ -5,12 +5,19 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^20.0.5",
     "@angular/common": "~20.0.0",
     "@angular/compiler": "~20.0.0",
     "@angular/core": "~20.0.0",
     "@angular/forms": "~20.0.0",
     "@angular/platform-browser": "~20.0.0",
     "@angular/router": "~20.0.0",
+    "flexi-button": "^20.0.0",
+    "flexi-grid": "^20.0.0",
+    "flexi-toast": "^20.0.3",
+    "flexi-tooltip": "^20.0.0",
+    "g": "^2.0.1",
+    "json-server": "^1.0.0-beta.3",
     "rxjs": "~7.8.0"
   },
   "devDependencies": {

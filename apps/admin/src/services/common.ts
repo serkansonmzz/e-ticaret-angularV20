@@ -7,6 +7,7 @@ import { brandCrumbModel } from '../pages/layouts/breadcrumb/breadcrumb';
 export class Common {
   readonly data = signal<brandCrumbModel[]>([]);
 
+
   set(data: brandCrumbModel[]) {
     const val: brandCrumbModel = {
       title: 'Home',
@@ -15,4 +16,5 @@ export class Common {
     };
     this.data.set([val, ...data]); //val ı data elemanların başına ekliyor hepsini bir dizi haline getirip bırakıyor..objelerden dizi olmuş oluyor.
   }
+
 }

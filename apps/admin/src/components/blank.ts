@@ -25,4 +25,5 @@ export default class Blank implements AfterViewInit {
   ngAfterViewInit(): void {
     this.#common.set(this.breadcrums());
   }
+
 }
